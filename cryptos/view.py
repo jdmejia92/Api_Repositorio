@@ -1,6 +1,6 @@
 from cryptos import MONEDAS
-
-muestra_api_key = "C87220DC-4A09-4D8E-B11B-EE898282AAA0"
+from cryptos import URL_TASA_ESPECIFICA
+import requests
 
 class CriptoValorView:
     def __init__(self):
@@ -11,11 +11,16 @@ class CriptoValorView:
     def pedir(self):
         key = input("Ingresa tu APIkey: ")
         while len(key) != 36:
-            print("La APIkey introducida no es correcta")
+            print("La APIKey no es correcta")
             key = input("Ingresa tu APIKey: ")
-        
-        self.key = key
+        confirmacion = requests.get(URL_TASA_ESPECIFICA. format("BTC","EUR",key))
+        while confirmacion.status_code == 401:
+            print("La APIKey no es valida")
+            key = input("Ingresa tu APIKey: ")
+            confirmacion = requests.get(URL_TASA_ESPECIFICA. format("BTC","EUR",key))
 
+        self.key = key
+  
         origen = input("Moneda origen: ")
         while origen not in MONEDAS:
             print("La moneda debe ser una de las siguientes: ")

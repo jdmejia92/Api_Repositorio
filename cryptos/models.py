@@ -15,12 +15,10 @@ class CriptoValorModel:
             self.destino,
             self.key
         ))
-        
-        if self.respuesta.status_code == 401:
-            raise APIError('La APIKey no es valida o fue emitida recientemente, pruebe de nuevo en unos minutos')
-        elif self.respuesta.status_code != 200:
-            raise APIError(self.respuesta.json()["error"])
 
+        if self.respuesta.status_code != 200:
+           raise APIError(self.respuesta.json()["error"])
+        
         self.tasa = round(self.respuesta.json()["rate"], 2)
 
 
