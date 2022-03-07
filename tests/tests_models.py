@@ -1,19 +1,18 @@
 import unittest
-from cryptos.models import CriptoValorModel, APIError, API_KEY
+from cryptos.models import CriptoValorModel, APIError
+from cryptos.config import API_KEY
 
 class TestModel(unittest.TestCase):
     def test_debes_informar_la_apikey(self):
-        global API_KEY
-        API_KEY = "0"
-        cv = CriptoValorModel("BTC", "EUR")
+        cv = CriptoValorModel("0", "BTC", "lolailos")
 
-        with self.assertRaises(APIError, "401"):
+        with self.assertRaisesRegex(APIError, "401"):
             cv.obtener_tasa()
 
     def test_la_moneda_debe_existir(self):
-        cv = CriptoValorModel("BTC", "lolailos")
+        cv = CriptoValorModel(API_KEY, "BTC", "lolailos")
 
-        with self.assertRaises(APIError, "550"):
+        with self.assertRaisesRegex(APIError, "550"):
             cv.obtener_tasa()
 
 

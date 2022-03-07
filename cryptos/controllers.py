@@ -1,10 +1,12 @@
+from sys import api_version
 from cryptos.models import CriptoValorModel, APIError
 from cryptos.view import CriptoValorView
+from cryptos.config import API_KEY
 
 class CriptoValorController:
     def __init__(self):
         self.vista = CriptoValorView()
-        self.modelo = CriptoValorModel()
+        self.modelo = CriptoValorModel(API_KEY)
 
     def ejecutar(self):
         self.vista.pedir()
