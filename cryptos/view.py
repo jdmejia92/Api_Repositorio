@@ -1,6 +1,4 @@
 from cryptos import MONEDAS
-from cryptos import URL_TASA_ESPECIFICA
-import requests
 
 class CriptoValorView:
     def __init__(self):
@@ -9,18 +7,6 @@ class CriptoValorView:
         self.key = ""
 
     def pedir(self):
-        key = input("Ingresa tu APIkey: ")
-        while len(key) != 36:
-            print("La APIKey no es correcta")
-            key = input("Ingresa tu APIKey: ")
-        confirmacion = requests.get(URL_TASA_ESPECIFICA. format("BTC","EUR",key))
-        while confirmacion.status_code == 401:
-            print("La APIKey no es valida")
-            key = input("Ingresa tu APIKey: ")
-            confirmacion = requests.get(URL_TASA_ESPECIFICA. format("BTC","EUR",key))
-
-        self.key = key
-  
         origen = input("Moneda origen: ")
         while origen not in MONEDAS:
             print("La moneda debe ser una de las siguientes: ")
@@ -39,3 +25,17 @@ class CriptoValorView:
 
     def mostrar(self, tasa):
         print("1 {} son {:.2f} {}".format(self.origen, tasa, self.destino))
+
+    def mostrar_error(self, codigo):
+        if codigo == 400:
+            print("Hay algo erroneo en tu peticion")
+        elif codigo == 401:
+            print("No autorizado - tu APIKey es erronea")
+        elif codigo == 403:
+            print("Prohibido - Tu APIKey no tiene acceso a esta funcionalidad")
+        elif codigo == 429:
+            print("Has excedido el limite de peticiones de tu APIKey")
+        elif codigo == 550:
+            print("Sin datos - La moneda pedida no existe en nuestra base de datos")
+        else:
+            print("{}, no sabemos que error es este codigo".format(codigo))

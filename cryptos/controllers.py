@@ -1,5 +1,4 @@
-from cryptos.errors import APIError
-from cryptos.models import CriptoValorModel
+from cryptos.models import CriptoValorModel, APIError
 from cryptos.view import CriptoValorView
 
 class CriptoValorController:
@@ -11,8 +10,8 @@ class CriptoValorController:
         self.vista.pedir()
         self.modelo.origen = self.vista.origen
         self.modelo.destino = self.vista.destino
-        self.modelo.key = self.vista.key
-        self.modelo.obtener_tasa()
-        self.vista.mostrar(self.modelo.tasa)
-
-    
+        try:
+            self.modelo.obtener_tasa()
+            self.vista.mostrar(self.modelo.tasa)
+        except APIError as e:
+            self.vista.mostrar_error(e.args[0])
