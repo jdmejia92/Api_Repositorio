@@ -4,10 +4,9 @@ from cryptos.errors import APIError
 from cryptos.config import API_KEY
 
 class CriptoValorModel:
-    def __init__(self, origen = "", destino = "", key = ""):
+    def __init__(self, origen = "", destino = ""):
         self.origen = origen
         self.destino = destino
-        self.key = key
         self.tasa = 0.0
 
     def obtener_tasa(self):
