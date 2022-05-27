@@ -10,9 +10,9 @@ Para poder utilizar el programa **cryptos**, primero debes pedir una APIKey a la
 
 Posteriormente debes:
 
-1. Copiar el fichero `config_template.py`, usando el siguiente comando:
+1. Copiar el fichero `config_template.py`, usando el siguiente comando en [powershell](https://windows-powershell.uptodown.com/windows):
 
-```cmd
+```powershell
 cp config_template.py config.py
 ```
 
