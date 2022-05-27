@@ -1,4 +1,3 @@
-from sys import api_version
 from cryptos.models import CriptoValorModel, APIError
 from cryptos.view import CriptoValorView
 from cryptos.config import API_KEY

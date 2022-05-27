@@ -17,8 +17,9 @@ class CriptoValorModel:
         ))
 
         if respuesta.status_code != 200:
-           #raise APIError(respuesta.status_code, respuesta.json()["error"])
-           raise APIError(respuesta.status_code)
+            #El codigo de la linea 21 es el mismo que el de la linea 22
+            #raise APIError(respuesta.status_code, respuesta.json()["error"])
+            raise APIError(respuesta.status_code)
         
         self.tasa = round(respuesta.json()["rate"], 2)
 
