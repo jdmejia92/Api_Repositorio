@@ -1,5 +1,5 @@
 venv/
-config.py/
+cryptos/config.py
 **__pycache__/
 .vscode/
-probatina.py/
+probatina.py
