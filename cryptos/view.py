@@ -6,6 +6,7 @@ class CriptoValorView:
         self.destino = ""
         self.key = ""
 
+    #Solicitar las monedas
     def pedir(self):
         origen = input("Moneda origen: ")
         while origen not in MONEDAS:
