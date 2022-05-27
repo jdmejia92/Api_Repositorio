@@ -14,6 +14,3 @@ class TestModel(unittest.TestCase):
 
         with self.assertRaisesRegex(APIError, "550"):
             cv.obtener_tasa()
-
-
-            

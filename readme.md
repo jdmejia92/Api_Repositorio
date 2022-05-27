@@ -1,16 +1,23 @@
 # Consulta de valor de cryptos en tiempo actual
 
-Descripcion de lo que hago
+Programa para practicar el uso de APIs en python
+
+Para esta prueba se utilizo el API **Coinapi**. Esta API se encarga de rastrear en tiempo real la tasa de cambio entre una criptomoneda y una moneda tradicional *(USD, EUR, etc)*
 
 ## API Key
 
-Debes pedir una APIKey a la pagina coinAPI.io
-Y debes 
-1. Copiar el fichero 'config_template.py'
-'''
+Para poder utilizar el programa **cryptos**, primero debes pedir una APIKey a la pagina de [CoinAPI.io](https://www.coinapi.io/)
+
+Posteriormente debes:
+
+1. Copiar el fichero `config_template.py`, usando el siguiente comando:
+
+```cmd
 cp config_template.py config.py
-'''
+```
 
 2. Introducir tu APIKey en el nuevo fichero
-'''
+```
 API_KEY=<tu clave aqui>
+```
+3. Ejecutar el archivo fuera de la carpeta **cryptos**: **Main.py**
